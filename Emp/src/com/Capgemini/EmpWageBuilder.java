@@ -5,6 +5,7 @@ import java.util.Random;
 public class EmpWageBuilder {
 
 	public static final int IS_FULL_TIME = 1;
+	public static final int IS_PART_TIME = 2;
 	public static final int EMP_RATE_PER_HOUR = 20;
 
 	public static void main(String[] args) {
@@ -12,13 +13,19 @@ public class EmpWageBuilder {
 		int empHrs = 0, empWage = 0;
 
 		Random r = new Random();
-		int empCheck = r.nextInt(2);
+		int empCheck = r.nextInt(3);
 
-		if (empCheck == IS_FULL_TIME)
+		switch (empCheck) {
+		case IS_FULL_TIME:
 			empHrs = 8;
-		else
+			break;
+		case IS_PART_TIME:
+			empHrs = 4;
+			break;
+		default:
 			empHrs = 0;
 
+		}
 		empWage = empHrs * EMP_RATE_PER_HOUR;
 		System.out.println("Emp Wage: " + empWage);
 	}
